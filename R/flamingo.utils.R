@@ -30,16 +30,6 @@ cal_proj_diag <- function(omega_diag,x){
 }
 
 
-#calculate adjoint
-
-def_smat <- function(x,y){
-  
-  sparseMatrix(i=c(x,y,x,y),j=c(x,y,y,x),x=c(1,1,-1,-1),dims=c(n,n))
-  #matrix(x=c(x,y,x,y),y=c(x,y,y,x),x=c(1,1,-1,-1),dims=c(n,n))
-  
-}
-
-
 convert_index <- function(x){
   
   # col_j <- findInterval(seq(x@x)-1,x@p[-1])+1

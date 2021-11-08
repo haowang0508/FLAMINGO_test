@@ -17,11 +17,11 @@ flamingo.construct_flamingo_from_hic <- function(hic_file,normalization,resoluti
   library(Matrix)
   options(scipen = 999)
   chr_number <- gsub("chr","",chr_name)
-  normalized_data = straw(normalization,hic_file,chr_number,chr_number,unit='BP',binsize=resolution)
+  normalized_data = strawr::straw(normalization,hic_file,chr_number,chr_number,unit='BP',binsize=resolution)
   n <- ceiling(chr_size/resolution)
   i_ind <- 1+(normalized_data[,1]/resolution)
   j_ind <- 1+(normalized_data[,2]/resolution)
-  input_if = sparseMatrix(i=i_ind,j=j_ind,x=normalized_data[,3],dims=c(n,n))
+  input_if = Matrix::sparseMatrix(i=i_ind,j=j_ind,x=normalized_data[,3],dims=c(n,n))
   input_if <- as.matrix(input_if)
   input_if <- input_if + t(input_if)
   diag(input_if) <- diag(input_if)/2
